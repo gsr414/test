@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+  <a class="navbar-brand text-white" href="#">Yourkart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+ 
+    <form class="navbar-nav ml-auto mr-auto">
+      <input class="form-control" width="600px" type="search" placeholder="Search" aria-label="Search">
+    </form>
+    <div class="navbar-nav">
+      <a class="navbar-brand text-white" href="#">Admin</a>
+      <a class="navbar-brand text-white" href="#"><i class="fa fa-shopping-cart"></i></a>
+
+      <button class="btn btn-md bg-primary text-white"
+      [disabled]="cart.itemCount == 0" routerLink="/cart">
+    
+  </button>
+      <span *ngIf="cart.itemCount > 0">
+        {{ cart.itemCount }} item(s)
+        {{ cart.cartPrice | currency:"USD":"symbol":"2.2-2" }}
+      </span>
+    </div>
+    <div class="navbar-nav">
+    
+    </div>
+   
+
+       
+  </div>
+  
+</nav>
+
+<div class="container-fluid category">
+    <div class="row">
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        
+        <a class="" href="" (click)="changeCategory()">Home</a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        <a class="" href="" (click)="changeCategory()">TVs & Appliances</a>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        Men
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        Women
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        Electronics
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        Home and Furniture
+      </div>
+    </div>
+
+    <button class="btn btn-block btn-outline-primary" (click)="changeCategory()">
+      Home
+    </button>
+    <button *ngFor="let cat of categories"
+            class="btn btn-outline-primary btn-block"
+            [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
+      {{cat}}
+    </button>
+  </div>
+
+
+  
+
+
+
+
+<div style="margin-top:40px" class="container-fluid">
+  <div class="card-deck text-center">
+    <!-- <div class="col-3 p-2">
+      <button class="btn btn-block btn-outline-primary" (click)="changeCategory()">
+        Home
+      </button>
+      <button *ngFor="let cat of categories" 
+          class="btn btn-outline-primary btn-block"
+          [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
+        {{cat}}
+      </button>
+      <button class="btn btn-block btn-danger m-t-3" routerLink="/admin">
+        Admin
+      </button>
+    </div> -->
+
+    <div class="card mb-4 box-shadow" *ngFor="let product of products">
+      <div class="card-body">
+        <img width="200px" height="350px" src="https://rukminim1.flixcart.com/image/800/960/jtn9bww0/t-shirt/5/f/c/s-hm-1001-maroon-black-helmont-original-imafdfvvz65ab7vm.jpeg?q=50" alt="">
+        <h4 class="my-0 font-weight-normal">{{product.name}}</h4>
+        <h4 class="card-title pricing-card-title">{{product.price | currency:'INR'}}</h4>
+        <button class="btn btn-lg btn-block btn-outline-primary"
+        (click)="addProductToCart(product)">
+  Add To Cart
+</button>
+      </div>
+    </div>
+  </div>
+</div>
