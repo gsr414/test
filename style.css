@@ -1,0 +1,17 @@
+.navColor{
+    border-bottom:3px solid #007bff;
+   
+}
+
+.navColor:hover{
+    /* border-bottom:1px solid #007bff; */
+   text-decoration: none;
+}
+.nav-1{
+margin-top:20px;
+text-decoration: none;
+list-style-type:none;
+}
+a{
+    color: black;
+}
